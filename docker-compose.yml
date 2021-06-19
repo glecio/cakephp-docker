@@ -2,11 +2,11 @@
 #                          Generated on phpdocker.io                          #
 ###############################################################################
 
-myapp-mailhog:
-  image: phpdockerio/mailhog:latest
-  container_name: myapp-mailhog
-  ports:
-    - "8125:8025"
+#myapp-mailhog:
+#  image: phpdockerio/mailhog:latest
+#  container_name: myapp-mailhog
+#  ports:
+#    - "8125:8025"
 
 myapp-mysql:
   image: mysql:5.7
@@ -23,7 +23,7 @@ myapp-mysql:
     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
 myapp-nginx:
-  image: phpdockerio/nginx:latest
+  image: nginx:latest
   container_name: myapp-nginx
   volumes:
       - ../cakephp:/var/www/myapp
@@ -39,7 +39,7 @@ myapp-php-fpm:
   container_name: myapp-php-fpm
   volumes:
     - ../cakephp:/var/www/myapp
-    - ./php-fpm/php-ini-overrides.ini:/etc/php/7.1/fpm/conf.d/99-overrides.ini
+    - ./php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
   links:
-    - myapp-mailhog
+#    - myapp-mailhog
     - myapp-mysql
